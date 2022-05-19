@@ -2,228 +2,139 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='../templates/style.css') }}" />
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            list-style-type: none;
         }
 
         html {
-            font-family: 'Lato', 'Arial', sans-serif;
-            font-weight: 500;
-            font-size: 20px;
-            text-rendering: optimizeLegibility;
+            overflow: scroll;
+            overflow-x: hidden;
         }
+
+
 
         body {
-            background-color: rgb(195, 227, 226);
+            font: normal 16px/1.5 'Libre Franklin', Helvetica, Georgia, sans-serif, serif;
+            background-color: aqua;
+            height: 100vh;
+            background: linear-gradient(#e8e6fd, #fff);
+            background: url("https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg");
+            background-size: cover;
+            background-position: center center;
         }
 
-        h1 {
-            color: black;
-            margin-bottom: 0;
-            margin-top: 20;
-            text-align: center;
-            font-size: 40px;
-        }
-
-
-        .row {
+        header {
+            width: 100%;
             display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-            height: auto;
+            justify-content: space-between;
+            padding: 20px 15px;
+            color: #666;
+            background-color: #5E8CEC;
         }
 
-        .ml-auto {
-            margin-left: auto !important;
-        }
-
-        .mr-auto {
-            margin-right: auto !important;
-        }
-
-        .col-md-10,
-        .col-md-8,
-        .col-md-4 {
-            position: relative;
-            width: 100%;
-            min-height: 1px;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-
-        .col-md-8 {
-            flex: 0 0 66.666667%;
-            max-width: 66.666667%
-        }
-
-        .col-md-4 {
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%
-        }
-
-        .col-md-10 {
-            flex: 0 0 83.333333%;
-            max-width: 83.333333%
-        }
-
-        .form-control {
-            background: no-repeat bottom, 50% calc(100% - 1px);
-            background-image: none, none;
-            background-size: auto, auto;
-            background-size: 0 100%, 100% 100%;
-            border: 0;
-            height: 36px;
-            transition: background 0s ease-out;
-            padding-left: 0;
-            padding-right: 0;
-            border-radius: 0;
-            font-size: 14px;
-        }
-
-        .form-control {
-            display: block;
-            width: 100%;
-            padding: .4375rem 0;
-            padding-right: 0px;
-            padding-left: 0px;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #495057;
-            border: none;
-            background-color: transparent;
-            background-clip: padding-box;
-            border-bottom: 1px solid #d2d2d2;
-            box-shadow: none;
-            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
-
-        .btn {
-            float: left;
-            text-align: center;
-            white-space: nowrap;
+        header a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 1.5em;
             vertical-align: middle;
-            user-select: none;
-            border: 1px solid transparent;
-            padding: .46875rem 1rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .25rem;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
 
-        .btn-warning {
-            color: #fff;
-            background-color: #f08f00;
-            border-color: #c27400;
-        }
-
-        .btn.btn-warning:active,
-        .btn.btn-warning:focus,
-        .btn.btn-warning:hover {
-            box-shadow: 0 14px 26px -12px rgba(255, 152, 0, .42), 0 4px 23px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(255, 152, 0, .2);
-        }
-
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            margin: 0;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            overflow: visible;
+        header h3 {
+            color: rgb(255, 255, 255);
+            font-family: poppin;
+            font-size: 20px;
+            text-align: left;
+            line-height: 30px;
         }
 
         #chatbox {
-            background-color: cyan;
             margin-left: auto;
             margin-right: auto;
-            width: 80%;
             min-height: 300px;
-            margin-top: 60px;
             justify-content: space-between;
             align-items: center;
-            padding-left: 12px;
             font-weight: bold;
             font-size: 22px;
             letter-spacing: 1px;
-        }
-
-        #userInput {
-            margin-left: auto;
-            margin-right: auto;
-            width: 40%;
-            margin-top: 60px;
-        }
-
-        #textInput {
-            width: 87%;
-            border: none;
-            border-bottom: 3px solid #009688;
-            font-family: monospace;
-            font-size: 17px;
-        }
-
-        #buttonInput {
-            padding: 3px;
-            font-family: monospace;
-            font-size: 17px;
+            background-color: #F3F3F3;
+            padding: 10px 20px;
+            width: 100%;
+            height: 450px;
+            overflow-y: scroll;
         }
 
         .userText {
 
-            color: white;
-            font-family: monospace;
-            text-align: right !important;
-
+            background-color: #98abb3;
+            color: #222;
+            font-size: .85em;
+            border-radius: 10px;
+            position: relative;
+            padding: 10px;
+            margin: 1% 0;
+            max-width: 70%;
+            min-width: 10%;
+            float: right;
+            word-wrap: break-word;
+            clear: both;
+            animation: scaler 150ms ease-out;
+            font-weight: 500;
         }
 
-        .userText span {
-            background-color: #009688;
-            max-width: 350px;
-            border-radius: 30px;
-            margin: 12px 14px;
-            width: inherit;
-            overflow-wrap: break-word;
-            padding: 7px 20px;
-            display: inline-block;
-            font-size: 15px;
-            word-spacing: 0.3px;
-            color: white;
-            text-align: start;
+        .userText span:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            width: 0;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #98abb3 transparent;
+
         }
 
         .botText {
-            color: white;
-            font-family: monospace;
-            font-size: 17px;
-            text-align: left;
-            line-height: 30px;
-            margin: 5px;
+            min-width: 10%;
+            display: inline-block;
+            font-size: .85em;
+            position: relative;
+            margin: 20% 0 3% 0;
+            animation: scaler 150ms ease-out;
+        }
+
+        .botText span:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 0;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #444 transparent;
+
         }
 
         .botText span {
-            background-color: #ef5350;
-            max-width: 350px;
-            border-radius: 30px;
-            margin: 12px 14px;
-            width: inherit;
-            overflow-wrap: break-word;
-            padding: 7px 20px;
-            display: inline-block;
-            font-size: 15px;
-            word-spacing: 0.3px;
-            color: white;
-            text-align: start;
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            word-wrap: break-word;
+            font-weight: 500;
+
+
         }
 
         #tidbit {
@@ -232,29 +143,123 @@
             right: 0;
             width: 300px;
         }
+
+        #pagewrap {
+            max-width: 360px;
+            margin: 3vh auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        #message {
+            width: 100%;
+        }
+
+        #message:before,
+        #message:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+
+
+        .reply {
+            padding: 15px 0;
+            background-color: #f5f8f9;
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            box-shadow: 0 6px 30px rgba(34, 102, 180, 0.23);
+        }
+
+        .reply:before,
+        .reply:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        input {
+            width: 72%;
+            padding: 10px;
+            border: none;
+            font-size: 1.2em;
+            background-color: inherit;
+        }
+
+        input:focus,
+        button:focus {
+            outline: 0;
+        }
+
+        button {
+            background-color: #222;
+            color: #fff;
+            padding: 15px 10px;
+            width: 20%;
+            vertical-align: middle;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1.2px;
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 0;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        @keyframes scaler {
+            0% {
+                transform: scale(0)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        #pagewrap {
+            max-width: 360px;
+            margin: 3vh auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
     </style>
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-10 mr-auto ml-auto">
-            <h1>Hotel AI ChatBot</h1>
-            <form>
-                <div id="chatbox">
-                    <div class="col-md-8 ml-auto mr-auto">
-
-                        <p class="botText"><span>Hi! I'm Your virtual bot.</span></p>
-                    </div>
-                </div>
-                <div id="userInput" class="row">
-                    <div class="col-md-10">
-                        <input id="text" type="text" name="msg" placeholder="Message" class="form-control">
-                        <button type="submit" id="send" class="btn btn-warning">Send</button>
-                    </div>
-                </div>
-            </form>
+    <div id="pagewrap">
+        <header>
+            <a href="#"><i style='color: white' class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+            <h3 class="name">Hi! I'm Zayou </h3>
+            <a href="#"><i style='color: white' class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+        </header>
+        <div id="chatbox">
+            <div id="message">
+            </div>
         </div>
+        <section class="reply" id="reply">
+            <form autocomplete="off">
+                <div id="userInput">
+                    <input id="text" type="text" name="msg" placeholder="Message me">
+                    <button type="submit" id="send">Send</button>
+                </div>
+
+            </form>
+        </section>
+
+
     </div>
+
 
     <script>
         $(document).ready(function () {

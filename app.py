@@ -44,16 +44,18 @@ def chatbot_response():
         res = getResponse(ints, intents)
     return res
 
-
 # chat functionalities
+
+
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(
         word.lower()) for word in sentence_words]
     return sentence_words
 
-
 # return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
+
+
 def bow(sentence, words, show_details=True):
     # tokenize the pattern
     sentence_words = clean_up_sentence(sentence)
